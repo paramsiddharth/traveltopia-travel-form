@@ -7,7 +7,10 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
-const controller = require('./controller');
+const controllers = {
+  submissions: require('./controllers/submisssions'),
+  csv:         require('./controllers/csv')
+};
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -20,9 +23,10 @@ if (process.env.NODE_ENV === 'development') {
   }));
 }
 
-app.use('/api', controller);
+app.use('/api/submissions', controllers.submissions);
+app.use('/api/csv', controllers.csv);
 
-const frontendPath = path.resolve(__dirname, 'dist');
+const frontendPath = path.resolve(__dirname, '..', 'dist');
 if (fs.pathExistsSync(frontendPath)) {
   app.use('/', express.static(frontendPath));
 }

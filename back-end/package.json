@@ -2,19 +2,20 @@
   "name": "take-home-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "start": "node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint \"**/*.js\"",
-    "lint:fix": "eslint --fix \"**/*.js\""
+    "lint": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint --fix \"src/**/*.js\""
   },
   "author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com/)",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+    "csv": "^6.2.7",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fs-extra": "^11.1.0",

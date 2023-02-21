@@ -1,13 +1,13 @@
 const express = require('express');
 
-const { maxSubmissionsPerPage } = require('../config.json');
-const Submission = require('./models/submission');
+const { maxSubmissionsPerPage } = require('../../../config.json');
+const Submission = require('../models/submission');
 
 const controller = express.Router();
 
 controller.use(express.json({ strict: true }));
 
-controller.route('/submissions')
+controller.route('/')
   .get(async (req, res) => {
     const page = parseInt(req.query.page || 0);
     const total = Math.ceil((await Submission.count()) / maxSubmissionsPerPage);
@@ -35,7 +35,7 @@ controller.route('/submissions')
     }
   });
 
-controller.get('/submissions/:id', async (req, res) => {
+controller.get('/:id', async (req, res) => {
   try {
     const submission = await Submission.findById(req.params.id);
     res.json(submission);
@@ -44,7 +44,7 @@ controller.get('/submissions/:id', async (req, res) => {
   }
 });
 
-controller.get('/submissions/:id', async (req, res) => {
+controller.get('/:id', async (req, res) => {
   try {
     const submission = await Submission.findById(req.params.id);
     res.json(submission);

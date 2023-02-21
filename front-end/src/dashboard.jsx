@@ -102,8 +102,8 @@ const Dashboard = () => {
               Page { page + 1 } of { total }
             </div>
             <Button variant='contained' color='info'
-              href='/api/csv'
-              download='entries.csv'
+              href={BACKEND_URL + 'api/csv'}
+              download='submissions.csv'
               sx={{ marginRight: 1 }}
             >
               Download CSV
