@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --port 3000",
-    "build": "vite build",
+    "build": "vite build --outDir \"../back-end/dist\"",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\""

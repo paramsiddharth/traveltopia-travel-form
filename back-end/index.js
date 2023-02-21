@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/api', controller);
 
-const frontendPath = path.resolve(__dirname, '..', 'front-end', 'dist');
+const frontendPath = path.resolve(__dirname, 'dist');
 if (fs.pathExistsSync(frontendPath)) {
   app.use('/', express.static(frontendPath));
 }
