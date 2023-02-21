@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
 
 import Layout from './components/layout';
 
@@ -9,7 +8,7 @@ const Dashboard = () => {
       <title>Travelopia - Dashboard</title>
     </Helmet>
     <h2>Dashboard</h2>
-		The dashboard goes here.
+    The dashboard goes here.
   </Layout>;
 };
 
