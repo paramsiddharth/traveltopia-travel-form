@@ -12,6 +12,7 @@ import {
 import { Helmet } from 'react-helmet-async';
 
 import './App.css';
+import Layout from './components/layout';
 
 const places = [
   'India',
@@ -31,11 +32,10 @@ function App() {
   const onChange = set => e => set(e.target.value);
 
   return (
-    <div className="App">
+    <Layout>
       <Helmet>
         <title>Travelopia - Submission Form</title>
       </Helmet>
-      <h1>Travelopia</h1>
       <h2>Submission Form</h2>
       <div>
         <form>
@@ -121,7 +121,7 @@ function App() {
           </div>
         </form>
       </div>
-    </div>
+    </Layout>
   );
 }
 
