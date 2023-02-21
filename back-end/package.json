@@ -1,0 +1,20 @@
+{
+  "name": "take-home-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
