@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 const controller = require('./controller');
 
@@ -12,6 +13,8 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+
   app.use(cors({
     origin: 'http://localhost:3000'
   }));
