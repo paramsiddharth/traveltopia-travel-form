@@ -1,12 +1,21 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Vortex } from 'react-loader-spinner';
+import { Refresh } from '@mui/icons-material';
 import axios from 'axios';
 
 import Layout from './components/layout';
 import { BACKEND_URL } from './config';
-import { maxSubmissionsPerPage } from '../../config.json';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -14,22 +23,29 @@ const Dashboard = () => {
   const [page, setPage]               = useState(0);
   const [total, setTotal]             = useState(0);
   const [loaded, setLoaded]           = useState(0);
+  const [reload, setReload]           = useState(false);
 
   const fetchData = async () => {
+    const {
+      data: {
+        submissions: newSubmissions,
+        page: newPage,
+        total: newTotal
+      }
+    } = await axios.get(BACKEND_URL + 'api/submissions', {
+      params: {
+        page
+      }
+    });
+    setSubmissions(newSubmissions);
+    setPage(newPage);
+    setTotal(newTotal);
+  };
+
+  const decoratedFetchData = async () => {
     try {
       setLoaded(0);
-      const {
-        data: {
-          submissions: newSubmissions,
-          page: newPage,
-          total: newTotal
-        }
-      } = await axios.get(BACKEND_URL + 'api/submissions', {
-        params: { page }
-      });
-      setSubmissions(newSubmissions);
-      setPage(newPage);
-      setTotal(newTotal);
+      await fetchData();
       setLoaded(1);
     } catch (e) {
       setLoaded(0);
@@ -37,7 +53,23 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => { fetchData(); }, []);
+  const toPage = no => async () => {
+    if (no !== page) {
+      setLoaded(0);
+      setPage(no);
+      setReload(!reload);
+    } else {
+      try {
+        await fetchData();
+      } catch (e) {
+        setLoaded(0);
+        throw e;
+      }
+    }
+  };
+
+  useEffect(() => { decoratedFetchData(); }, []);
+  useEffect(() => { decoratedFetchData(); }, [reload]);
 
   return <Layout>
     <Helmet>
@@ -54,6 +86,34 @@ const Dashboard = () => {
           Loading...
         </div>
         : <div>
+          <div style={{ display: 'flex', marginBottom: 15 }}>
+            <Button disabled={page < 1} variant='contained' color='warning'
+              onClick={toPage(page - 1)}
+              sx={{ marginRight: 1 }}
+            >
+              Previous
+            </Button>
+            <Button variant='contained' color='error'
+              onClick={toPage(page)}
+            >
+              <Refresh />
+            </Button>
+            <div style={{ flexGrow: 1, textAlign: 'center' }}>
+              Page { page + 1 } of { total }
+            </div>
+            <Button variant='contained' color='info'
+              href='/api/csv'
+              download='entries.csv'
+              sx={{ marginRight: 1 }}
+            >
+              Download CSV
+            </Button>
+            <Button disabled={page >= total - 1 } variant='contained' color='success'
+              onClick={toPage(page + 1)}
+            >
+              Next
+            </Button>
+          </div>
           <TableContainer sx={{ maxWidth: '90vw', maxHeight: '90vh' }} component={ Paper }>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
