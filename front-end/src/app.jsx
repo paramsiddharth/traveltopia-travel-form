@@ -16,7 +16,6 @@ import { Vortex } from 'react-loader-spinner';
 import './app.css';
 import Layout from './components/layout';
 import { BACKEND_URL } from './config';
-import { maxSubmissionsPerPage } from '../../config.json';
 
 const places = [
   'India',
