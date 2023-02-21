@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
     'settings': {
         'react': {
@@ -24,7 +25,7 @@ module.exports = {
     'rules': {
         'indent': [
             'error',
-            4
+            2
         ],
         'linebreak-style': [
             'error',
@@ -37,6 +38,7 @@ module.exports = {
         'semi': [
             'error',
             'always'
-        ]
+        ],
+        'react/react-in-jsx-scope': 'off'
     }
 };

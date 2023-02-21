@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "npm run dev",
+    "dev": "vite --port 3000",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint": "eslint '**/*.{js,jsx}'",
+    "lint:fix": "eslint --fix '**/*.{js,jsx}'"
   },
   "dependencies": {
     "react": "^18.2.0",
