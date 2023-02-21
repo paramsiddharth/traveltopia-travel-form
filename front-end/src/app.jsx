@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
+import { Vortex } from 'react-loader-spinner';
 
 import './app.css';
 import Layout from './components/layout';
@@ -153,10 +154,15 @@ function App() {
             </form>
             : submitted === 1
               ? <div>
+                <Vortex
+                  colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+                />
+                <br />
                 Submitting...
               </div>
               : <div>
-                Submitted (ID: { subID })!
+                <h3>Submitted!</h3>
+                <span>Your submission has been made with ID { subID }.</span>
               </div>
         }
       </div>
