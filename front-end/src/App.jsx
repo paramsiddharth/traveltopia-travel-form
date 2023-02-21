@@ -6,10 +6,10 @@ import {
   InputAdornment,
   InputLabel,
   MenuItem,
-  OutlinedInput,
   Select,
   TextField
 } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 
 import './App.css';
 
@@ -20,12 +20,21 @@ const places = [
 ];
 
 function App() {
-  const [destination, setDestination] = useState(null);
+  const [name, setName]                       = useState('');
+  const [email, setEmail]                     = useState('');
+  const [destination, setDestination]         = useState(null);
+  const [travellerCount, setTravellerCount]   = useState(2);
+  const [budgetPerPerson, setBudgetPerPerson] = useState(1500);
+
+  const netBudget = travellerCount * budgetPerPerson;
 
   const onChange = set => e => set(e.target.value);
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Travelopia - Submission Form</title>
+      </Helmet>
       <h1>Travelopia</h1>
       <h2>Submission Form</h2>
       <div>
@@ -39,6 +48,8 @@ function App() {
               fullWidth
               label='Name'
               required
+              value={name}
+              onChange={onChange(setName)}
             />
           </div>
           <div className='input-field'>
@@ -48,6 +59,8 @@ function App() {
               label='E-mail address'
               type='email'
               required
+              value={email}
+              onChange={onChange(setEmail)}
             />
           </div>
           <div className='input-field'>
@@ -74,6 +87,8 @@ function App() {
               label='Number of travellers'
               type='number'
               required
+              value={travellerCount}
+              onChange={onChange(setTravellerCount)}
             />
           </div>
           <div className='input-field'>
@@ -86,10 +101,12 @@ function App() {
               label='Budget per person'
               type='number'
               required
+              value={budgetPerPerson}
+              onChange={onChange(setBudgetPerPerson)}
             />
           </div>
           <div className='input-field submit'>
-            <Chip label='Net budget: $400' onClick={() => {}} />
+            <Chip label={`Net budget: $${netBudget}`} onClick={() => {}} />
             <Button
               sx={{
                 paddingRight: 4,
@@ -97,7 +114,10 @@ function App() {
               }}
               variant='contained'
               color='primary'
-            >Submit</Button>
+              type='submit'
+            >
+              Submit
+            </Button>
           </div>
         </form>
       </div>
