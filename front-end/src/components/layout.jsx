@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
       </NavItem>
     </nav>
     { children }
-    <footer>
+    <footer style={{ marginTop: 20 }}>
       &copy; Param Siddharth 2023-{ new Date().getFullYear() }
     </footer>
   </div>;

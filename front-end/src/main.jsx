@@ -7,7 +7,9 @@ import {
   RouterProvider
 } from 'react-router-dom';
 
-import App from './App';
+import NotFound from './404';
+import App from './app';
+import Dashboard from './dashboard';
 import './index.css';
 
 const themes = {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ]);
 

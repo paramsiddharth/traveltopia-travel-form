@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 
-import './App.css';
+import './app.css';
 import Layout from './components/layout';
 
 const places = [
