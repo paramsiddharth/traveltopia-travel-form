@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd front-end && npm ci && npm run build",
-    "start": "cd back-end && npm ci --only=production && npm start"
+    "build": "cd front-end && npm ci && npm run build && cd ../back-end && npm ci --omit=dev",
+    "start": "cd back-end && npm start"
   },
   "author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com/)",
   "license": "ISC"
