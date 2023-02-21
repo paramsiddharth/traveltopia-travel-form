@@ -1,0 +1,13 @@
+{
+  "name": "take-home-test",
+  "version": "1.0.0",
+  "description": "A form for travellers to request a trip via.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd front-end && npm ci && npm run build",
+    "start": "cd back-end && npm ci --only=production && npm start"
+  },
+  "author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com/)",
+  "license": "ISC"
+}
