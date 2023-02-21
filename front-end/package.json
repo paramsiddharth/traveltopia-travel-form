@@ -8,8 +8,8 @@
     "dev": "vite --port 3000",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint \"**/*.{js,jsx}\"",
-    "lint:fix": "eslint --fix \"**/*.{js,jsx}\""
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

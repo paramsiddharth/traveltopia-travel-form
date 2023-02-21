@@ -33,13 +33,4 @@ const Layout = ({ children }) => {
   </div>;
 };
 
-NavItem.propTypes = {
-  href: String,
-  children: [Component]
-};
-
-Layout.propTypes = {
-  children: [Component]
-};
-
 export default Layout;
