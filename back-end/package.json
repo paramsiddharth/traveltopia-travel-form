@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint --fix \"**/*.js\""
   },
   "author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com/)",
   "license": "ISC",
@@ -15,9 +17,11 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "fs-extra": "^11.1.0"
+    "fs-extra": "^11.1.0",
+    "mongoose": "^6.9.2"
   },
   "devDependencies": {
+    "eslint": "^8.34.0",
     "nodemon": "^2.0.20"
   }
 }

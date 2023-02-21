@@ -4,6 +4,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const controller = require('./controller');
 
@@ -27,4 +28,9 @@ app.use((_, res) => {
   res.setHeader('Content-Type', 'text/html').sendFile(path.join(frontendPath, 'index.html'));
 });
 
-app.listen(port, () => console.log(`Server running on http://localhost:${port}/`));
+mongoose
+  .set('strictQuery', true)
+  .connect(process.env.MONGODB_URI || 'http://localhost/traveltopia', () => {
+    console.log('Connected to the database.');
+    app.listen(port, () => console.log(`Server running on http://localhost:${port}/`));
+  });
