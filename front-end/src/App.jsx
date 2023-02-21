@@ -31,6 +31,20 @@ function App() {
 
   const onChange = set => e => set(e.target.value);
 
+  const onSubmit = e => {
+    e.preventDefault();
+
+    const reqBody = {
+      name,
+      email,
+      destination,
+      travellerCount,
+      budgetPerPerson
+    };
+    
+    // Handle submission
+  };
+
   return (
     <Layout>
       <Helmet>
@@ -38,7 +52,7 @@ function App() {
       </Helmet>
       <h2>Submission Form</h2>
       <div>
-        <form>
+        <form onSubmit={onSubmit}>
           <p>
             Contact us to plan your next journey!
           </p>
