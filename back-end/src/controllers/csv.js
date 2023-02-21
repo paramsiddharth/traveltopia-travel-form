@@ -34,7 +34,6 @@ controller.get('/', async (req, res) => {
       );
     }
 
-    console.log(stringify(records));
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename=submissions.csv');
     res.send(await promisify(stringify)(records));
