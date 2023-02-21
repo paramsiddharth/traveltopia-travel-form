@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { maxSubmissionsPerPage } = require('../config');
+const { maxSubmissionsPerPage } = require('../config.json');
 const Submission = require('./models/submission');
 
 const controller = express.Router();
